@@ -62,7 +62,7 @@ router.get('/getrobot/:robotid', function(req, res, next) {
 });
 
 router.put('/chargerobot/:robotid', function(req, res, next) {
-  Robot.updateOne({_id: req.params.robotid, batteryLevel: 100}).then(() => {
+  Robot.updateOne({_id: req.params.robotid }, { batteryLevel: 100 }).then(() => {
     res.json({ result: true, message: "robot rechargé" });
   }).catch(error => {
     res.json(500, { result: false, message: "erreur lors de la tentative de recharge du robot", error });
